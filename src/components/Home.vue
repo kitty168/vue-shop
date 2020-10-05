@@ -6,7 +6,7 @@
         <img src="../assets/logo.png" alt="" width="45" />
         <span>电商后台管理系统</span>
       </div>
-      <el-button type="info" size="default" @click="logout">退出登录</el-button>
+      <el-button type="info" size="default" @click="logout">退出</el-button>
     </el-header>
     <!-- 页面主体区域 -->
     <el-container>
