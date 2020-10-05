@@ -1,5 +1,6 @@
 <template>
   <el-container class="home_container">
+    <!-- 头部区域 -->
     <el-header>
       <div>
         <img src="../assets/logo.png" alt="" width="45" />
@@ -7,8 +8,35 @@
       </div>
       <el-button type="info" size="default" @click="logout">退出登录</el-button>
     </el-header>
+    <!-- 页面主体区域 -->
     <el-container>
-      <el-aside width="200px">Aside</el-aside>
+      <!-- 侧边栏 -->
+      <el-aside width="220px">
+        <!-- 侧边栏菜单导航区域 -->
+        <el-menu background-color="#333744" text-color="#fff" active-text-color="#ffd04b">
+          <!-- 一级菜单 -->
+          <el-submenu index="1">
+            <!-- 一级菜单模板区 -->
+            <template slot="title">
+              <!-- 图标 -->
+              <i class="el-icon-location"></i>
+              <!-- 文本 -->
+              <span>导航一</span>
+            </template>
+
+            <!-- 二级菜单 -->
+            <el-menu-item index="1-1"
+              ><template slot="title">
+                <!-- 图标 -->
+                <i class="el-icon-location"></i>
+                <!-- 文本 -->
+                <span>导航2</span>
+              </template></el-menu-item
+            >
+          </el-submenu>
+        </el-menu>
+      </el-aside>
+      <!-- 右侧页面主体 -->
       <el-main>Main</el-main>
     </el-container>
   </el-container>
