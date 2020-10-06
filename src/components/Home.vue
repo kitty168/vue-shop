@@ -23,6 +23,7 @@
           unique-opened
           :collapse="isCollapse"
           :collapse-transition="false"
+          router
         >
           <!-- 一级菜单 -->
           <el-submenu :index="item.id + ''" v-for="item in menuList" :key="item.id">
@@ -36,7 +37,7 @@
 
             <!-- 二级菜单 -->
             <el-menu-item
-              :index="subItem.id + ''"
+              :index="'/' + subItem.path"
               v-for="subItem in item.children"
               :key="subItem.id"
             >
@@ -51,7 +52,9 @@
         </el-menu>
       </el-aside>
       <!-- 右侧页面主体 -->
-      <el-main>Main</el-main>
+      <el-main>
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
