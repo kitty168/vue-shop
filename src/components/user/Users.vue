@@ -11,8 +11,13 @@
     <el-card>
       <el-row :gutter="20">
         <el-col :span="8">
-          <el-input placeholder="请输入内容" class="input-with-select">
-            <el-button slot="append" icon="el-icon-search"></el-button>
+          <el-input
+            placeholder="请输入内容"
+            v-model="queryInfo.query"
+            clearable
+            @clear="getUserList"
+          >
+            <el-button slot="append" icon="el-icon-search" @click="getUserList"></el-button>
           </el-input>
         </el-col>
         <el-col :span="4">
@@ -29,7 +34,10 @@
         <el-table-column label="角色" prop="role_name"></el-table-column>
         <el-table-column label="状态">
           <template slot-scope="scope">
-            <el-switch v-model="scope.row.mg_state"></el-switch>
+            <el-switch
+              v-model="scope.row.mg_state"
+              @change="userStateChanged(scope.row)"
+            ></el-switch>
           </template>
         </el-table-column>
         <el-table-column label="操作">
@@ -85,6 +93,15 @@ export default {
       this.userList = res.data.users
       this.total = res.data.total
       // console.log(res)
+    },
+    async userStateChanged (userInfo) {
+      console.log(userInfo)
+      const { data: res } = await this.$http.put(`users/${userInfo.id}/state/${userInfo.mg_state}`)
+      if (res.meta.status !== 200) {
+        userInfo.mg_state = !userInfo.mg_state
+        return this.$message.error('用户状态更新失败')
+      }
+      this.$message.success('用户状态更新成功')
     },
     // 监听 pagesize 改变得事件
     handleSizeChange (pagesize) {
