@@ -281,8 +281,21 @@ export default {
     editDialogClosed () {
       this.$refs.editFormRef.resetFields()
     },
-    removeUserById (id) {
-      console.log(id)
+    async removeUserById (id) {
+      const confirmResult = await this.$confirm('确定要删除该用户吗?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).catch(err => err)
+
+      if (confirmResult !== 'confirm') return this.$message.error('已取消删除')
+
+      // 发起删除用户的请求
+      const { data: res } = await this.$http.delete('users/' + id)
+      if (res.meta.status !== 200) return this.$message.error('用户删除失败')
+
+      this.getUserList()
+      this.$message.success('用户删除成功')
     },
     // 监听 pagesize 的change事件
     handleSizeChange (pagesize) {
