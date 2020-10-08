@@ -1,15 +1,15 @@
 html,
 body,
 #app {
-  height   : 100%;
-  padding  : 0;
-  margin   : 0;
+  height: 100%;
+  padding: 0;
+  margin: 0;
   min-width: 1366px;
 }
 
 .el-breadcrumb {
   margin-bottom: 15px;
-  font-size    : 12px;
+  font-size: 12px;
 }
 
 .el-card {
@@ -18,13 +18,16 @@ body,
 
 .el-table {
   margin-top: 15px;
-  font-size : 12px;
+  font-size: 12px;
 }
 
 .el-pagination {
   margin-top: 15px;
 }
 
-.el-cascader-panel {
-  height: 300px !important;
+.el-cascader-menu {
+  height: 280px !important;
+}
+.el-scrollbar__wrap {
+  overflow-x: hidden !important;
 }

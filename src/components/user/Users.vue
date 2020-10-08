@@ -331,7 +331,7 @@ export default {
         type: 'warning'
       }).catch(err => err)
 
-      if (confirmResult !== 'confirm') return this.$message.error('已取消删除')
+      if (confirmResult !== 'confirm') return this.$message.info('已取消删除')
 
       // 发起删除用户的请求
       const { data: res } = await this.$http.delete('users/' + id)
