@@ -3,7 +3,7 @@
     <!-- 头部区域 -->
     <el-header>
       <div>
-        <img src="../assets/logo.png" alt="" width="45" />
+        <img src="../assets/logo.png" alt="18shop" width="45" />
         <span>电商后台管理系统</span>
       </div>
       <el-button type="info" size="default" @click="logout">退出</el-button>
